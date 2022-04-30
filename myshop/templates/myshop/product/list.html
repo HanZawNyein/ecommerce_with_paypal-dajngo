@@ -1,0 +1,39 @@
+{% extends "myshop/components/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.name }}{% else %}Products{% endif %}
+{% endblock title %}
+{% block content %}
+    <div class="row container">
+        <div class="col-md-3">
+            {% include 'myshop/components/sidebar.html' %}
+        </div>
+        <div class="col" onscroll="true">
+            <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+            {% if products %}
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    {% for product in products %}
+                        <div class="col">
+                            <div class="card">
+                                <img src="
+
+                                        {% if product.image %}{{ product.image.url }}{% else %}{% static "myshop/image/no_image_available.jpeg" %}{% endif %}"
+                                     class="card-img-top" alt="{{ product.image.url }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.price }}MMK</p>
+                                    <a href="{{ product.get_absolute_url }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            {% else %}
+                <div class="alert alert-info" role="alert">{{ category }} Products are not found!</div>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock %}
