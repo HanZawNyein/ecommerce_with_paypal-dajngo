@@ -39,7 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'myshop.apps.MyshopConfig'
+    'myshop.apps.MyshopConfig',
+
+    # cart
+    'cart.apps.CartConfig',
+
+    # add_modules
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -57,7 +63,7 @@ ROOT_URLCONF = 'paymentwithpaypal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'myshop/../myshop/templates']
+        'DIRS': [BASE_DIR / 'myshop/../myshop/../templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -66,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_ processors.cart',
             ],
         },
     },
@@ -127,3 +134,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CART_SESSION_ID = os.environ.get("card_session_id")

@@ -1,4 +1,4 @@
-{% extends "myshop/components/base.html" %}
+{% extends "components/base.html" %}
 {% load static %}
 {% block title %}
     {% if category %}{{ category.name }}{% else %}Products{% endif %}
@@ -6,10 +6,11 @@
 {% block content %}
     <div class="row container">
         <div class="col-md-3">
-            {% include 'myshop/components/sidebar.html' %}
+            {% include 'components/sidebar.html' %}
         </div>
         <div class="col" onscroll="true">
             <h1>{% if category %}{{ category.name }}{% else %}Products{% endif %}</h1>
+        <hr/>
             {% if products %}
                 <div class="row row-cols-1 row-cols-md-4 g-4">
                     {% for product in products %}
