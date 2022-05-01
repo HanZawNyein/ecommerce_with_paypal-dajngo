@@ -1,0 +1,28 @@
+{% extends 'components/base.html' %}
+
+{% block title %}Make Payment{% endblock %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1>Pay with PayPal, Visa</h1>
+        <hr/>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>
+                    <img style="width:200px"
+                         src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2560px-PayPal.svg.png">
+                </td>
+                <td>{{ form.render }}</td>
+            </tr>
+            <tr>
+                <td>
+                    <img style="width:200px"
+                         src="https://i.ytimg.com/vi/i09C02151PI/maxresdefault.jpg">
+                </td>
+                <td>{{ form.render }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

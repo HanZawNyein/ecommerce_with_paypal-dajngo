@@ -1,0 +1,65 @@
+{% extends "components/base.html" %}
+{% load  widget_tweaks %}
+{% block title %}  Checkout {% endblock %}
+{% block content %}
+    <div class="container mt-3 bg-light">
+        <div class="row">
+            <h1>Checkout</h1>
+            <hr/>
+            <div class="col">
+                <form method="post" class="row">
+                    {% for order_form in form %}
+                        <div class="row mb-4">
+                            <div class="col">{{ order_form.label }}</div>
+                            {{ order_form|add_class:"col form-control" }}
+                        </div>
+
+                    {% endfor %}
+                    <div class="row">
+                        <input type="submit" class="col-md-3 m-3 btn btn-primary" value="Place order">
+                        <a href="{% url 'cart:cart_detail' %}" class="col-md-3 m-3 btn btn-outline-secondary">Back</a>
+                    </div>
+                    {% csrf_token %}  </form>
+            </div>
+
+            <div class="col bg-light">
+                <div class="card">
+                    <div class="card-header">
+                        Your Order
+                    </div>
+                    <div class="card-body">
+                        {#                        <h5 class="card-title">Special title treatment</h5>#}
+                        <div class="card-text">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="row">Items</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-end">Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for item in cart %}
+                                    <tr>
+                                        <td>{{ item.product.name }}</td>
+                                        <td class="text-center">{{ item.quantity }}</td>
+                                        <td class="text-end">${{ item.total_price }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                        <div class="row">
+                            <div class="col">Total:</div>
+                            <div class="col text-end">${{ cart.get_total_price }}</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

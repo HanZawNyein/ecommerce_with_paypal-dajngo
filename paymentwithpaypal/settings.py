@@ -41,11 +41,18 @@ INSTALLED_APPS = [
     # my apps
     'myshop.apps.MyshopConfig',
 
+
     # cart
     'cart.apps.CartConfig',
+    # 'processpaymentpaypal.apps.ProcesspaymentpaypalConfig',
+
+    # orders
+    'orders.apps.OrdersConfig',
 
     # add_modules
-    'widget_tweaks'
+    'widget_tweaks',
+
+    'paypal.standard.ipn'
 ]
 
 MIDDLEWARE = [
@@ -136,3 +143,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CART_SESSION_ID = os.environ.get("card_session_id")
+
+# paypal
+PAYPAL_RECEIVER_EMAIL = os.environ.get("PAYPAL_RECEIVER_EMAIL")
+
+PAYPAL_TEST = os.environ.get("PAYPAL_TEST")

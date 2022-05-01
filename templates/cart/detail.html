@@ -6,7 +6,7 @@
 {% block content %}
     {% if cart %}
         <div class="container mt-3">
-        <h5>Your shopping cart</h5>
+            <h5>Your shopping cart</h5>
             <table class="table table-image table-dark table-borderless">
                 <thead>
                 <tr>
@@ -24,6 +24,7 @@
                         <tr>
                             <td class="table bg-dark" style="max-width: 10%">
                                 <img src="
+
 
 
 
@@ -63,15 +64,15 @@
 
             <p class="text-right">
                 <a href="{% url "myshop:product_list" %}" class="btn btn-outline-primary">Continue shopping</a>
-                <a href="#" class="btn btn-outline-secondary">Checkout</a>
-            </p>
+                <a href="{% url "orders:order_create" %}" class="btn btn-outline-secondary"> Checkout </a></p>
         </div>
     {% else %}
         <div class="container mt-3">
-        <h5>Your shopping cart</h5>
+            <h5>Your shopping cart</h5>
             <hr/>
-        <div class="alert alert-secondary" role="alert">
-Empty Items</div>
+            <div class="alert alert-secondary" role="alert">
+                Empty Items
+            </div>
         </div>
 
     {% endif %}
